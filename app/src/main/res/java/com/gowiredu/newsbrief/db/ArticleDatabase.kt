@@ -1,11 +1,8 @@
-package com.example.newsapplication.db
+package com.gowiredu.newsbrief.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.example.newsapplication.models.Article
+import androidx.room.*
+import com.gowiredu.newsbrief.models.Article
 
 @Database(
     entities = [Article::class],
@@ -19,8 +16,9 @@ abstract class ArticleDatabase : RoomDatabase() {
 
     companion object {
         private var instance: ArticleDatabase? = null
-        private val LOCK = Any()
+        private val LOCK = Any() // only a single instance of database at once
 
+        // create instance of Article Database class
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
             instance ?: createDatabase(context).also { instance = it }
         }

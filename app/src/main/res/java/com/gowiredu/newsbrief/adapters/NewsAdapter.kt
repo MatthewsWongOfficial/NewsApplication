@@ -1,4 +1,4 @@
-package com.example.newsapplication.adapters
+package com.gowiredu.newsbrief.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
